@@ -1,12 +1,25 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Req, Res, Request } from '@nestjs/common';
+import { Request as ExpressRequest, Router } from "express";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  public async getRouters(@Request() req: ExpressRequest) {
+    const router = req.app._router as Router;
+    
+    return {
+        routes: router.stack
+            .map(layer => {
+              console.log(layer.route)
+                if(layer.route) {
+                    const path = layer.route?.path;
+                    const method = layer.route?.stack[0].method;
+                    return `${method.toUpperCase()} ${path}`
+                }
+            })
+            .filter(item => item !== undefined)
+    }
   }
 }

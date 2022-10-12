@@ -7,8 +7,7 @@ export function TransformStringToDate(){
         if(res instanceof Date && !res){
             return res
         }
-        const a = new Date(res.value.slice(0,10).split(/[-.\/]/));
-        console.log(a)
-        return a
+
+        return new Date(res.value.slice(0,10).split(/[-.\/]/));
     })
 }

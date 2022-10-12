@@ -1,20 +1,23 @@
-import { Transform } from 'class-transformer';
-import { IsDate, IsEmail, IsString, MaxDate, MaxLength, MinLength } from 'class-validator'
+import { errorMessage } from './../../common/functions/validation-error-message';
+import { IsDate, IsEmail, IsNotEmpty, IsString, MaxDate, MaxLength, MinLength } from 'class-validator'
 import { TransformStringToDate } from 'src/common/functions/transfotm-string-to-date';
 
 export class CreatePeopleDto{
 
-    @IsString()
-    @MaxLength(100)
-    @MinLength(2)
+    @IsString({message: errorMessage.isString})
+    @MaxLength(100,{message: errorMessage.maxLength})
+    @MinLength(2,{message: errorMessage.minLength})
+    @IsNotEmpty({message: errorMessage.isNotEmpty})
     readonly name: string;
      
-    @IsEmail()
-    @IsString()
+    @IsEmail({message: errorMessage.isEmail})
+    @IsString({message: errorMessage.isString})
+    @IsNotEmpty({message: errorMessage.isNotEmpty})
     readonly email: string;
 
-    @IsDate()
-    @MaxDate(new Date())
+    @IsDate({message: errorMessage.isDate})
+    @MaxDate(new Date(),{message: errorMessage.maxDate})
+    @IsNotEmpty({message: errorMessage.isNotEmpty})
     @TransformStringToDate()
     readonly birthDate: Date;
 }
