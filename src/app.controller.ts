@@ -12,7 +12,6 @@ export class AppController {
     return {
         routes: router.stack
             .map(layer => {
-              console.log(layer.route)
                 if(layer.route) {
                     const path = layer.route?.path;
                     const method = layer.route?.stack[0].method;

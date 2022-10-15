@@ -17,7 +17,6 @@ export class PeopleController {
     @Post('pessoa')
     public async create(@Body() createDto: CreatePeopleDto,
         @Res({ passthrough: true }) res: Response): Promise<People> {
-        console.log(createDto)
 
         try {
             const people = await this.peopleService.create(createDto);
@@ -101,7 +100,6 @@ export class PeopleController {
                 message: 'Não foi possivel apagar o registro!'
             });;
         }
-
         res.status(HttpStatus.OK)
         return 'Pessoa foi removida com sucesso!';
 
