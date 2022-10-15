@@ -26,7 +26,7 @@ Na pasta do projeto instale as dependências com uso do npm
 npm install
 
 ```
-Na arquivo [.env](https://github.com/carlosjeff/people-crud-api/blob/main/.env) edite o dados de conexão com o banco de dados:
+No arquivo [.env](https://github.com/carlosjeff/people-crud-api/blob/main/.env) edite os dados de conexão com o banco de dados:
 ```
 DATABASE_HOST="Host do banco de dados"
 DATABASE_PORT="Porta do banco de dados"
@@ -35,7 +35,7 @@ DATABASE_USER="Usuário do banco de dados"
 DATABASE_PASSWORD="Senha do banco de dados"
 ```
 
-Para que a apricação crie as tabelas no banco de dados é precisso que synchronize esteja true no aquivo
+Para que a aplicação crie as tabelas no banco de dados é preciso que synchronize esteja true no arquivo
 [src/app.module.ts](https://github.com/carlosjeff/people-crud-api/blob/main/src/app.module.ts):
 
 ```javascript
