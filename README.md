@@ -1,73 +1,79 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# People CRUD Api
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Projeto proposto para demostrar o conhecimento em NestJS construído uma Api de cadastro de pessoas.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Deploy: https://people-crud-api-production.up.railway.app/
 
-## Description
+## Começando
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-## Installation
+### Pré-requisitos
 
+* NPM
+* Node
+* Banco de Dados MySQL
+
+### Instalação
+
+Clone este repositório usando o comando:
 ```bash
-$ npm install
+git clone https://github.com/carlosjeff/people-crud-api.git
+
+```
+Na pasta do projeto instale as dependências com uso do npm
+```bash
+npm install
+
+```
+Na arquivo [.env](https://github.com/carlosjeff/people-crud-api/blob/main/.env) edite o dados de conexão com o banco de dados:
+```
+DATABASE_HOST="Host do banco de dados"
+DATABASE_PORT="Porta do banco de dados"
+DATABASE_NAME="Nome do banco de dados"
+DATABASE_USER="Usuário do banco de dados"
+DATABASE_PASSWORD="Senha do banco de dados"
 ```
 
-## Running the app
+Para que a apricação crie as tabelas no banco de dados é precisso que synchronize esteja true no aquivo
+[src/app.module.ts](https://github.com/carlosjeff/people-crud-api/blob/main/src/app.module.ts):
 
-```bash
-# development
-$ npm run start
+```javascript
+# Essa configuração não deve ser usada na produção - caso contrário, você poderá perder dados.
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+ TypeOrmModule.forRoot({
+      synchronize: true
+    })
 ```
 
-## Test
-
+Para iniciar o servidor é só usar o comando na pasta do projeto:
 ```bash
-# unit tests
-$ npm run test
+npm run start
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
-## Support
+Você deve obter uma resposta com os endpoints disponíveis:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+``` json
+    {
+    "POST": "/api/v1/pessoa",
+    "GET": "/api/v1/pessoa/:id",
+    "GET": "/api/v1/pessoas",
+    "PUT": "/api/v1/pessoa/:id",
+    "DELETE": "/api/v1/pessoa/:id"
+    }
+```
 
-## Stay in touch
+## Construído com
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+* [NestJS](https://nestjs.com/) - Framework JavaScript
+* [TypeORM](https://typeorm.io/) - Object-Relational Mapping (ORM)
 
-## License
+## Autor
 
-Nest is [MIT licensed](LICENSE).
+* **Carlos Jefferson Braga Alves** - [LinkedIn ](https://www.linkedin.com/in/carlosjeff/)
+
+
+## Licença
+
+Este projeto está sob a licença MIT License - veja o arquivo [LICENSE.md](https://github.com/carlosjeff/people-crud-api/blob/main/LICENSE) para detalhes.
