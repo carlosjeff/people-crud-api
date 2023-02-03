@@ -2,7 +2,6 @@
 
 Projeto proposto para demostrar o conhecimento em NestJS construído uma Api de cadastro de pessoas.
 
-Deploy: https://people-crud-api-production.up.railway.app/
 
 ## Começando
 
